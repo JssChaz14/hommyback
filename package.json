@@ -1,0 +1,23 @@
+{
+    "name": "hommyback",
+    "version": "1.0.0",
+    "description": "Backend Hommunity",
+    "main": "index.js",
+    "scripts": {
+        "start:dev": "nodemon index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/JssChaz14/hommyback.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/JssChaz14/hommyback/issues"
+    },
+    "homepage": "https://github.com/JssChaz14/hommyback#readme",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
