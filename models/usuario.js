@@ -6,7 +6,11 @@ const usuarioSchema = Schema({
 
     nick: { type: String, required: [true, 'Nick requerido'] },
     nombre: { type: String, required: [true, 'Nombre requerido'] },
-    correo: { type: String, unique: true, required: [true, 'Correo requerido'] },
+    correo: {
+        type: String,
+        unique: true,
+        required: [true, 'Correo requerido']
+    },
     password: { type: String, required: [true, 'Contraseña requerida'] },
 
     ciudad: { type: String, required: [true, 'Ciudad requerido'] },
@@ -25,5 +29,11 @@ const usuarioSchema = Schema({
     ultimaOperacion: { type: Date, default: Date.now },
     estadoOperacion: { type: Boolean, default: true, required: false }
 });
+
+usuarioSchema.method('toJSON', function() {
+    const { __v, _id, ...object } = this.toObject();
+    object.uid = _id;
+    return object;
+})
 
 module.exports = model('Usuario', usuarioSchema);
