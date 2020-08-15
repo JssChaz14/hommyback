@@ -16,14 +16,15 @@ dbConnection();
 
 
 // Rutas
-app.get('/', (req, res) => {
+app.use('/api/usuarios', require('./routes/usuarios'))
+    // app.get('/', (req, res) => {
 
-    res.json({
-        ok: true,
-        msg: 'Hola Mundo'
-    });
+//     res.json({
+//         ok: true,
+//         msg: 'Hola Mundo'
+//     });
 
-});
+// });
 
 
 app.listen(process.env.PORT, () => {
