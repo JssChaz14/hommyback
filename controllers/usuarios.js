@@ -2,15 +2,19 @@ const { response } = require('express');
 const bcrypt = require('bcryptjs');
 
 const { validationResult } = require('express-validator');
+const { generarJWT } = require('../helpers/jwt');
 
 const Usuario = require('../models/usuario');
 
-
 const getUsuarios = async(req, res) => {
+    console.log('aquí')
     const usuarios = await Usuario.find({}, 'nombre correo nick password');
+    console.log(usuarios)
+
     res.json({
         ok: true,
-        usuarios
+        usuarios,
+        uid: req.uid
     });
 }
 
@@ -35,10 +39,13 @@ const crearUsuarios = async(req, res) => {
         usuario.password = bcrypt.hashSync(password, salt);
 
         await usuario.save();
+        console.log(usuario)
+        const token = await generarJWT(usuario.id);
 
         res.json({
             ok: true,
-            usuario
+            usuario,
+            token
         });
 
     } catch (error) {
