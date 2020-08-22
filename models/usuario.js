@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const usuarioSchema = Schema({
 
-    idCondomino: { type: String, required: [true, 'Condomino requerido'] },
+    idCondomino: { type: String, required: [false, 'Condomino requerido'] },
 
     nick: { type: String, required: [true, 'Nick requerido'] },
     nombre: { type: String, required: [true, 'Nombre requerido'] },

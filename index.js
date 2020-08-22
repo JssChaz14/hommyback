@@ -20,6 +20,15 @@ dbConnection();
 app.use('/api/usuarios', require('./routes/usuarios'))
 app.use('/api/login', require('./routes/auth'));
 
+app.use('/api/condominos', require('./routes/condominos'));
+
+app.use('/api/ingresos', require('./routes/ingresos'));
+// app.use('/api/abonos', require('./routes/condominos'));
+
+app.use('/api/conceptos', require('./routes/conceptos'));
+
+app.use('/api/cargos', require('./routes/cargos'));
+
 
 app.listen(process.env.PORT, () => {
     console.log('Servidor corriendo en puerto ' + process.env.PORT);
