@@ -12,7 +12,15 @@ const router = Router();
 
 router.get('/', getCargos);
 
-router.post('/', [], crearCargos);
+router.post('/', [
+    validarJWT,
+    check('anio', 'Año reqerido').not().isEmpty(),
+    check('mes', 'Mes reqerido').not().isEmpty(),
+    check('monto', 'Monto reqerido').not().isEmpty(),
+    check('idCondomino', 'Condomino necesario').not().isEmpty(),
+    check('idConcepto', 'Concepto necesario').not().isEmpty(),
+    validarCampos
+], crearCargos);
 
 router.put('/:id', [], editarCargos);
 

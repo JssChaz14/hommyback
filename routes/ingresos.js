@@ -12,7 +12,15 @@ const router = Router();
 
 router.get('/', getIngresos);
 
-router.post('/', [], crearIngresos);
+router.post('/', [
+    validarJWT,
+    check('fecha', 'fecha reqerido').not().isEmpty(),
+    check('monto', 'monto reqerido').not().isEmpty(),
+    check('referencia', 'referencia reqerido').not().isEmpty(),
+    check('estatus', 'estatus reqerido').not().isEmpty(),
+
+    validarCampos
+], crearIngresos);
 
 router.put('/:id', [], editarIngresos);
 

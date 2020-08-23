@@ -10,7 +10,7 @@ const cargoSchema = Schema({
     tipoCargo: { type: String, required: [true, 'Tipo cargo requerido'], default: 'CONDOMINO' },
     monto: { type: Number, required: [true, 'Cantidad requerida'] },
     nuevoMonto: { type: Number, required: false },
-    interes: { type: Number, required: [true, 'Interes requerido'] },
+    interes: { type: Number, required: false },
 
     idCondomino: {
         type: Schema.Types.ObjectId,

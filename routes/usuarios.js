@@ -12,8 +12,14 @@ const router = Router();
 router.get('/', validarJWT, getUsuarios);
 
 router.post('/',
-    check('nombre').not().isEmpty(),
+    check('nick', 'Nick para el formulario requerido').not().isEmpty(),
+    check('nombre', 'Nombre requerido').not().isEmpty(),
     check('correo', 'correo obligatorio').isEmail(),
+    check('password', 'Contraseña requerida').not().isEmpty(),
+    check('ciudad', 'Ciudad requerido').not().isEmpty(),
+    check('cp', 'Código postal requerido').not().isEmpty(),
+    check('role', 'Role requerido').not().isEmpty(),
+
     validarCampos,
     crearUsuarios);
 

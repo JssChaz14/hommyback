@@ -12,7 +12,15 @@ const router = Router();
 
 router.get('/', getCondominos);
 
-router.post('/', [], crearCondominos);
+router.post('/', [
+    validarJWT,
+    check('nombre', 'Nombre reqerido').not().isEmpty(),
+    check('calle', 'Calle reqerido').not().isEmpty(),
+    check('celular', 'Celular reqerido').not().isEmpty(),
+    check('correo', 'Correo reqerido y en formato correo').isEmail(),
+
+    validarCampos
+], crearCondominos);
 
 router.put('/:id', [], editarCondominos);
 

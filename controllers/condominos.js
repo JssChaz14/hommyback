@@ -1,4 +1,6 @@
-const { response } = require('express')
+const { response } = require('express');
+
+const Condomino = require('../models/condomino');
 
 const getCondominos = (req, res = response) => {
     res.json({
@@ -7,11 +9,31 @@ const getCondominos = (req, res = response) => {
     })
 }
 
-const crearCondominos = (req, res = response) => {
-    res.json({
-        ok: true,
-        msg: 'crear condominos'
-    })
+const crearCondominos = async(req, res = response) => {
+    const uid = req.uid;
+    console.log(uid);
+    const condomino = new Condomino({
+        usuarioOperacion: uid,
+        ...req.body
+    });
+
+    try {
+
+        const condominoDB = await condomino.save();
+
+        res.json({
+            ok: true,
+            msg: 'crear condominos',
+            condominoDB
+        })
+
+    } catch (err) {
+        res.json({
+            ok: false,
+            msg: err
+        })
+    }
+
 }
 
 const editarCondominos = (req, res = response) => {

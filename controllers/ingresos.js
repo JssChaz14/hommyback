@@ -1,4 +1,6 @@
-const { response } = require('express')
+const { response } = require('express');
+const Ingreso = require('../models/ingreso');
+
 
 const getIngresos = (req, res = response) => {
     res.json({
@@ -7,11 +9,32 @@ const getIngresos = (req, res = response) => {
     })
 }
 
-const crearIngresos = (req, res = response) => {
-    res.json({
-        ok: true,
-        msg: 'crear Ingresos'
-    })
+const crearIngresos = async(req, res = response) => {
+
+    const uid = req.uid;
+
+    const ingreso = new Ingreso({
+        usuarioOperacion: uid,
+        ...req.body
+    });
+
+    try {
+
+        const ingresoDB = await ingreso.save();
+
+        res.json({
+            ok: true,
+            msg: 'crear ingreso',
+            ingresoDB
+        })
+
+    } catch (err) {
+        res.json({
+            ok: false,
+            msg: err
+        })
+    }
+
 }
 
 const editarIngresos = (req, res = response) => {

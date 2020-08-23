@@ -30,7 +30,7 @@ const condominoSchema = Schema({
     ultimaOperacion: { type: Date, default: Date.now },
     estadoOperacion: { type: Boolean, default: true, required: false }
 
-}, { collection: 'Condominos' });
+}, { collection: 'condominos' });
 
 condominoSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();
