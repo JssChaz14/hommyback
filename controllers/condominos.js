@@ -2,10 +2,14 @@ const { response } = require('express');
 
 const Condomino = require('../models/condomino');
 
-const getCondominos = (req, res = response) => {
+const getCondominos = async(req, res = response) => {
+
+    const condominos = await Condomino.find({});
+
     res.json({
         ok: true,
-        msg: 'lista condominos'
+        msg: 'lista condominos',
+        condominos
     })
 }
 

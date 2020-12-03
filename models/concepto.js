@@ -22,9 +22,13 @@ const conceptoSchema = Schema({
         required: false
     },
     ultimaOperacion: { type: Date, default: Date.now },
-    estadoOperacion: { type: Boolean, default: true, required: false }
+    estadoOperacion: { type: Boolean, default: true, required: false },
+    usuario: {
+        type: Schema.Types.ObjectId,
+        ref: "Usuario"
+    }
 
-});
+}, { collection: 'conceptos' });
 
 conceptoSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

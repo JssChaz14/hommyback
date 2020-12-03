@@ -1,12 +1,12 @@
 const { Schema, model } = require('mongoose');
 
 const adeudosSchema = Schema({
-    idCargo: {
+    cargo: {
         type: Schema.Types.ObjectId,
         ref: 'Cargo',
         required: [true, 'Cargo requerido']
     },
-    idCondomino: {
+    condomino: {
         type: Schema.Types.ObjectId,
         ref: 'Condomino',
         required: [true, 'Condomino requerido']
@@ -15,14 +15,14 @@ const adeudosSchema = Schema({
     fecha: { type: Date, default: Date.now },
 
     fechaOperacion: { type: Date, default: Date.now },
-    usuarioOperacion: {
+    usuariooperacion: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
         required: false
     },
     ultimaOperacion: { type: Date, default: Date.now },
     estadoOperacion: { type: Boolean, default: true, required: false }
-});
+}, { collection: 'adeudos' });
 
 cargoSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

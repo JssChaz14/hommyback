@@ -7,23 +7,23 @@ const tipoPago = {
 
 const conciliacionSchema = Schema({
 
-    idIngreso: {
+    ingreso: {
         type: Schema.Types.ObjectId,
         ref: 'Ingreso',
         required: [true, 'Ingreso requerido']
     },
-    idCargo: {
+    cargo: {
         type: Schema.Types.ObjectId,
         ref: 'Cargo',
         required: [true, 'Cargo requerido']
     },
-    idCondomino: {
+    condomino: {
         type: Schema.Types.ObjectId,
         ref: 'Condomino',
         required: [true, 'Condomino requerido']
     },
 
-    monto: { type: Number, required: [true, 'Cantidad requerida'] },
+    // monto: { type: Number, required: [true, 'Cantidad requerida'] },
     tipo: {
         type: String,
         default: 'PAGO',
@@ -37,7 +37,7 @@ const conciliacionSchema = Schema({
     fecha: { type: Date, default: Date.now },
 
     fechaOperacion: { type: Date, default: Date.now },
-    usuarioOperacion: {
+    usuariooperacion: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
         required: false
@@ -45,7 +45,7 @@ const conciliacionSchema = Schema({
     ultimaOperacion: { type: Date, default: Date.now },
     estadoOperacion: { type: Boolean, default: true, required: false }
 
-});
+}, { collection: 'conciliaciones' });
 
 conciliacionSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

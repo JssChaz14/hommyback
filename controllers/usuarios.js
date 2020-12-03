@@ -9,6 +9,7 @@ const Usuario = require('../models/usuario');
 const getUsuarios = async(req, res) => {
     console.log('aquí')
     const usuarios = await Usuario.find({}, 'nombre correo nick password');
+    // await Usuario.find().populate('usuario', 'nombre')
     console.log(usuarios)
 
     res.json({

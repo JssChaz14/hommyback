@@ -12,19 +12,20 @@ const cargoSchema = Schema({
     nuevoMonto: { type: Number, required: false },
     interes: { type: Number, required: false },
 
-    idCondomino: {
+    condomino: {
         type: Schema.Types.ObjectId,
         ref: 'Condomino',
         required: [true, 'Condmomino requerido']
     },
-    idConcepto: {
-        type: Schema.Types.ObjectId,
-        ref: 'Concepto',
-        required: [true, 'Concepto requerido']
-    },
+    // idConcepto: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Concepto',
+    //     required: [true, 'Concepto requerido']
+    // },
+    concepto: { type: Schema.Types.ObjectId, ref: 'Concepto', required: [true, 'Concepto requerido'] },
 
     fechaOperacion: { type: Date, default: Date.now },
-    usuarioOperacion: {
+    usuariooperacion: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
         required: false
@@ -32,7 +33,7 @@ const cargoSchema = Schema({
     ultimaOperacion: { type: Date, default: Date.now },
     estadoOperacion: { type: Boolean, default: true, required: false }
 
-});
+}, { collection: 'cargos' });
 
 cargoSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

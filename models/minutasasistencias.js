@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const minutasasistencias = Schema({
 
-    idCondomino: {
+    condominos: {
         type: Schema.Types.ObjectId,
         ref: 'Condomino',
         required: false
@@ -11,7 +11,7 @@ const minutasasistencias = Schema({
     fecha: { type: Date, default: Date.now },
 
     fechaOperacion: { type: Date, default: Date.now },
-    usuarioOperacion: {
+    usuariooperacion: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
         required: false
@@ -19,7 +19,7 @@ const minutasasistencias = Schema({
     ultimaOperacion: { type: Date, default: Date.now },
     estadoOperacion: { type: Boolean, default: true, required: false }
 
-});
+}, { collection: 'minutasasistencias' });
 
 minutasasistencias.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

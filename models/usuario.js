@@ -21,14 +21,14 @@ const usuarioSchema = Schema({
     role: { type: String, required: [true, 'Rol requerido'], default: 'CONDOMINO' },
 
     fechaOperacion: { type: Date, default: Date.now },
-    usuarioOperacion: {
+    usuariooperacion: {
         type: Schema.Types.ObjectId,
         ref: 'Condomino',
         required: false
     },
     ultimaOperacion: { type: Date, default: Date.now },
     estadoOperacion: { type: Boolean, default: true, required: false }
-});
+}, { collection: 'usuarios' });
 
 usuarioSchema.method('toJSON', function() {
     const { __v, _id, password, ...object } = this.toObject();

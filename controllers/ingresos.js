@@ -2,10 +2,14 @@ const { response } = require('express');
 const Ingreso = require('../models/ingreso');
 
 
-const getIngresos = (req, res = response) => {
+const getIngresos = async(req, res = response) => {
+
+    const ingresos = await Ingreso.find({});
+
     res.json({
         ok: true,
-        msg: 'lista Ingresos'
+        msg: 'lista Ingresos',
+        ingresos
     })
 }
 

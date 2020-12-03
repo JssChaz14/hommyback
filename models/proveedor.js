@@ -17,7 +17,7 @@ const proveedorSchema = Schema({
     correoContacto: { type: String, required: false },
 
     fechaOperacion: { type: Date, default: Date.now },
-    usuarioOperacion: {
+    usuariooperacion: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
         required: false

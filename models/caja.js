@@ -10,7 +10,7 @@ const cajaSchema = Schema({
     estatus: { type: Boolean, required: false },
 
     fechaOperacion: { type: Date, default: Date.now },
-    usuarioOperacion: {
+    usuariooperacion: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
         required: false
@@ -18,7 +18,7 @@ const cajaSchema = Schema({
     ultimaOperacion: { type: Date, default: Date.now },
     estadoOperacion: { type: Boolean, default: true, required: false }
 
-});
+}, { collection: 'caja' });
 
 cargoSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

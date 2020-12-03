@@ -23,7 +23,7 @@ app.use('/api/login', require('./routes/auth'));
 app.use('/api/condominos', require('./routes/condominos'));
 
 app.use('/api/ingresos', require('./routes/ingresos'));
-// app.use('/api/abonos', require('./routes/condominos'));
+app.use('/api/conciliacion', require('./routes/conciliacion'));
 
 app.use('/api/conceptos', require('./routes/conceptos'));
 

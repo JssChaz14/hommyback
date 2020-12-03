@@ -2,11 +2,17 @@ const { response } = require('express');
 
 const Cargo = require('../models/cargo');
 
-const getCargos = (req, res = response) => {
+const getCargos = async(req, res = response) => {
+
+    const cargos = await Cargo.find({})
+        .populate('concepto', 'concepto monto')
+        .populate('condomino', 'nombre correo')
+
     res.json({
         ok: true,
-        msg: 'lista Cargos'
-    })
+        cargos
+    });
+
 }
 
 const crearCargos = async(req, res = response) => {

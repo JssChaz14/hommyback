@@ -17,8 +17,8 @@ router.post('/', [
     check('anio', 'Año reqerido').not().isEmpty(),
     check('mes', 'Mes reqerido').not().isEmpty(),
     check('monto', 'Monto reqerido').not().isEmpty(),
-    check('idCondomino', 'Condomino necesario').not().isEmpty(),
-    check('idConcepto', 'Concepto necesario').not().isEmpty(),
+    check('condomino', 'Condomino necesario').not().isEmpty(),
+    check('concepto', 'Concepto necesario').not().isEmpty(),
     validarCampos
 ], crearCargos);
 

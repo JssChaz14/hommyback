@@ -6,7 +6,7 @@ const familiarSchema = Schema({
     correo: { type: String, unique: true, required: [true, 'Correo requerido'] },
     telefono: { type: String, required: [true, 'Telèfono requerido'] },
 
-    idCondomino: {
+    condomino: {
         type: Schema.Types.ObjectId,
         ref: 'Condomino',
         required: true
@@ -16,7 +16,7 @@ const familiarSchema = Schema({
     role: { type: String, required: [true, 'Rol requerido'], default: 'FAMILIAR' },
 
     fechaOperacion: { type: Date, default: Date.now },
-    usuarioOperacion: {
+    usuariooperacion: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
         required: false
@@ -24,7 +24,7 @@ const familiarSchema = Schema({
     ultimaOperacion: { type: Date, default: Date.now },
     estadoOperacion: { type: Boolean, default: true, required: false }
 
-});
+}, { collection: 'familiares' });
 
 familiarSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

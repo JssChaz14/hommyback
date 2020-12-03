@@ -8,7 +8,7 @@ const egresoSchema = Schema({
     formaPago: { type: String, required: [true, 'Forma de pago requerido'], default: 'EFECTIVO' },
     referenciaPago: { type: String, required: false },
 
-    idProveedor: {
+    proveedor: {
         type: Schema.Types.ObjectId,
         ref: 'Proveedor',
         required: [false, 'Proveedor requerido']
@@ -19,7 +19,7 @@ const egresoSchema = Schema({
     mes: { type: String, required: false },
 
     fechaOperacion: { type: Date, default: Date.now },
-    usuarioOperacion: {
+    usuariooperacion: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
         required: false
@@ -27,7 +27,7 @@ const egresoSchema = Schema({
     ultimaOperacion: { type: Date, default: Date.now },
     estadoOperacion: { type: Boolean, default: true, required: false }
 
-});
+}, { collection: 'egresos' });
 
 egresoSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

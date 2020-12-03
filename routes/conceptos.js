@@ -13,16 +13,16 @@ const router = Router();
 router.get('/', getConcepto);
 
 router.post('/', [
-    validarJWT,
+    // validarJWT,
     check('concepto', 'concepto reqerido').not().isEmpty(),
     check('monto', 'monto reqerido').not().isEmpty(),
     check('periodicidad', 'periodicidad reqerido').not().isEmpty(),
 
-    validarCampos
+    // validarCampos
 ], crearConcepto);
 
 router.put('/:id', [], editarConcepto);
 
-router.put('/borrar/:id', [], eliminarConcepto);
+router.delete('/borrar/:id', [], eliminarConcepto);
 
 module.exports = router;

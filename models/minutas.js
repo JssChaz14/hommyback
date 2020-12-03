@@ -9,7 +9,7 @@ const minutasSchema = Schema({
     cantiadadAsistentes: { type: String, required: false },
 
     fechaOperacion: { type: Date, default: Date.now },
-    usuarioOperacion: {
+    usuariooperacion: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
         required: false
@@ -17,7 +17,7 @@ const minutasSchema = Schema({
     ultimaOperacion: { type: Date, default: Date.now },
     estadoOperacion: { type: Boolean, default: true, required: false }
 
-});
+}, { collection: 'minutas' });
 
 minutasSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();
