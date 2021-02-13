@@ -4,12 +4,12 @@ const { validarCampos } = require('../middlewares/validar-campos');
 
 const { validarJWT } = require('../middlewares/validar-jwt');
 
-const { getConciliacion, crearConciliacion, editarConciliacion, eliminarConciliacion } = require('../controllers/conciliacion');
+const { addConciliacion, getConciliacion, crearConciliacion, editarConciliacion, eliminarConciliacion } = require('../controllers/conciliacion');
 
 const router = Router();
 
 router.get('/', getConciliacion);
-
+router.post('/addConciliacion', addConciliacion);
 router.post('/', [
         validarJWT,
         check('ingreso', 'Ingreso necesario').not().isEmpty(),

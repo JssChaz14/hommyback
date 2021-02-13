@@ -33,7 +33,7 @@ const getConcepto = async(req, res = response) => {
 }
 
 const crearConcepto = async(req, res = response) => {
-
+    console.log(req.body)
     const uid = req.uid;
     const concepto = new Concepto({
         usuarioOperacion: uid,

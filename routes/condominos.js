@@ -22,7 +22,13 @@ router.post('/', [
     validarCampos
 ], crearCondominos);
 
-router.put('/:id', [], editarCondominos);
+router.put('/:id', [
+        validarJWT,
+        check('nombre', 'El nombre del condomino es necesario').not().isEmpty(),
+        validarCampos
+    ],
+    editarCondominos
+);
 
 router.put('/borrar/:id', [], eliminarCondominos);
 

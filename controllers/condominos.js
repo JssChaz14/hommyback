@@ -40,11 +40,43 @@ const crearCondominos = async(req, res = response) => {
 
 }
 
-const editarCondominos = (req, res = response) => {
-    res.json({
-        ok: true,
-        msg: 'Editar condominos'
-    })
+const editarCondominos = async(req, res = response) => {
+
+    const id = req.params.id;
+    const uid = req.uid;
+
+    try {
+
+        const condomino = await Condomino.findById(id);
+
+        if (!condomino) {
+            return res.status(404).json({
+                ok: true,
+                msg: 'Condomino no encontrado'
+            })
+        }
+
+        const condominoEditado = {
+            ...req.body,
+            usuarioOperacion: uid
+        }
+
+        const condominoActualizado = await Condomino.findByIdAndUpdate(id, condominoEditado, { new: true });
+
+        res.json({
+            ok: true,
+            msg: 'Editar condominos',
+            condominoActualizado
+        })
+
+    } catch (error) {
+        console.log(error);
+
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el administrador'
+        })
+    }
 }
 
 const eliminarCondominos = (req, res = response) => {

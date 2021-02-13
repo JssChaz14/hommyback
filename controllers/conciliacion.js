@@ -1,8 +1,35 @@
 const { response } = require('express');
 
-const Conciliacion = require('../models/conciliacion');
+// const Conciliacion = require('../models/conciliacion');
 const Cargos = require('../models/cargo');
-const conciliacion = require('../models/conciliacion');
+const Conciliacion = require('../models/conciliacion');
+
+const addConciliacion = async(req, res = response) => {
+    console.log(req.body)
+
+    const uid = req.uid;
+    const conciliar = new Conciliacion({
+        usuarioOperacion: uid,
+        ...req.body
+    });
+
+    try {
+
+        const conceptoDB = await conciliar.save();
+
+        res.json({
+            ok: true,
+            msg: 'crear conciliar',
+            conciliar
+        })
+
+    } catch (err) {
+        res.json({
+            ok: false,
+            msg: err
+        })
+    }
+}
 
 
 const getConciliacion = async(req, res = response) => {
@@ -86,4 +113,4 @@ const eliminarConciliacion = (req, res = response) => {
     })
 }
 
-module.exports = { getConciliacion, crearConciliacion, editarConciliacion, eliminarConciliacion };
+module.exports = { addConciliacion, getConciliacion, crearConciliacion, editarConciliacion, eliminarConciliacion };

@@ -23,7 +23,7 @@ const conciliacionSchema = Schema({
         required: [true, 'Condomino requerido']
     },
 
-    // monto: { type: Number, required: [true, 'Cantidad requerida'] },
+    monto: { type: Number, required: [true, 'Cantidad requerida'] },
     tipo: {
         type: String,
         default: 'PAGO',
@@ -32,7 +32,7 @@ const conciliacionSchema = Schema({
     },
     entidad: { type: String, required: false },
     concepto: { type: String, required: false },
-    pagado: { type: Boolean, default: false, required: true },
+    // pagado: { type: Boolean, default: false, required: true },
     estatus: { type: Boolean, required: false },
     fecha: { type: Date, default: Date.now },
 
